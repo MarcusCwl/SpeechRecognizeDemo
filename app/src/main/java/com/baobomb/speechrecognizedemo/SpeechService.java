@@ -73,6 +73,7 @@ public class SpeechService extends Service implements RecognitionListener {
     public void onResult(Hypothesis hypothesis) {
         Log.d("BAO", "onResult");
         if (hypothesis != null) {
+            Log.d("BAO", "result : "+hypothesis.getHypstr());
         }
     }
 
@@ -89,24 +90,31 @@ public class SpeechService extends Service implements RecognitionListener {
         switch (text) {
             case SpeechKeys.COMMANDER:
                 sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
             case SpeechKeys.MENU:
                 sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
             case SpeechKeys.CAMERA:
                 sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
             case SpeechKeys.SETTING:
                 sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
             case SpeechKeys.BLUETOOTH:
                 sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
             case SpeechKeys.WAKEUP:
                 sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
             case SpeechKeys.ERROR:
                 sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
             default:
                 sendMessage("");
@@ -141,7 +149,6 @@ public class SpeechService extends Service implements RecognitionListener {
         Message message = Message.obtain(SpeechRecognizerApplication.speechHandler);
         message.obj = msg;
         message.sendToTarget();
-        switchSearch(SpeechKeys.WAKEUP);
     }
 
 }
