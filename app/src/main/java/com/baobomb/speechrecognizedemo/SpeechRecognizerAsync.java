@@ -26,7 +26,7 @@ public class SpeechRecognizerAsync extends AsyncTask<Void, Void, Exception> {
     }
 
     public Exception init() {
-        Log.d("BAO","speech async init");
+        Log.d("BAO", "speech async init");
         try {
             Assets assets = new Assets(context);
             File assetDir = assets.syncAssets();
@@ -44,12 +44,13 @@ public class SpeechRecognizerAsync extends AsyncTask<Void, Void, Exception> {
 
     @Override
     protected void onPostExecute(Exception result) {
-        Log.d("BAO","speech async onPostExecute");
+        Log.d("BAO", "speech async onPostExecute");
         if (result != null) {
             Message message = Message.obtain(SpeechRecognizerApplication.speechHandler);
             message.obj = SpeechKeys.ERROR;
             message.sendToTarget();
         } else {
+//            SpeechRecognizerApplication.speechService.switchSearch(SpeechKeys.SETTING);
             SpeechRecognizerApplication.speechService.switchSearch(SpeechKeys.WAKEUP);
         }
     }
@@ -62,15 +63,16 @@ public class SpeechRecognizerAsync extends AsyncTask<Void, Void, Exception> {
         SpeechRecognizerApplication.speechRecognizer = defaultSetup()
                 .setAcousticModel(new File(assetsDir, "en-us-ptm"))
                 .setDictionary(new File(assetsDir, "cmudict-en-us.dict"))
-
+//                .setAcousticModel(new File(assetsDir, "zh_ptm"))
+//                .setDictionary(new File(assetsDir, "zh_tw.dic"))
                 // To disable logging of raw audio comment out this call (takes a lot of space on the device)
                 .setRawLogDir(assetsDir)
 
                 // Threshold to tune for keyphrase to balance between false alarms and misses
                 .setKeywordThreshold(1e-45f)
-
                 // Use context-independent phonetic search, context-dependent is too slow for mobile
                 .setBoolean("-allphone_ci", true)
+//                .setBoolean("-remove_noise", true)
 
                 .getRecognizer();
         SpeechRecognizerApplication.speechRecognizer.addListener(SpeechRecognizerApplication.speechService);
@@ -80,16 +82,19 @@ public class SpeechRecognizerAsync extends AsyncTask<Void, Void, Exception> {
          */
 
         // Create keyword-activation search.
+//        SpeechRecognizerApplication.speechRecognizer.addKeyphraseSearch(SpeechKeys.SETTING, SpeechKeys.MENU);
         SpeechRecognizerApplication.speechRecognizer.addKeyphraseSearch(SpeechKeys.WAKEUP, SpeechKeys.COMMANDER);
 
-//        File menuGrammar = new File(assetsDir, "menu.gram");
-//        SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(MENU_SEARCH, menuGrammar);
-//        File digitsGrammar = new File(assetsDir, "digits.gram");
-//        SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(DIGITS_SEARCH, digitsGrammar);
-//        File languageModel = new File(assetsDir, "weather.dmp");
-//        SpeechRecognizerApplication.speechRecognizer.addNgramSearch(FORECAST_SEARCH, languageModel);
-//        File phoneticModel = new File(assetsDir, "en-phone.dmp");
-//        SpeechRecognizerApplication.speechRecognizer.addAllphoneSearch(PHONE_SEARCH, phoneticModel);
+//        File languageModel = new File(assetsDir, "zh_tw.lm");//这里为语音模型
+//        SpeechRecognizerApplication.speechRecognizer.addNgramSearch("test", languageModel);
+        File menuGrammar = new File(assetsDir, "menu.gram");
+        SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(SpeechKeys.MENU_SEARCH, menuGrammar);
+        File digitsGrammar = new File(assetsDir, "digits.gram");
+        SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(SpeechKeys.DIGITS_SEARCH, digitsGrammar);
+        File languageModel = new File(assetsDir, "weather.dmp");
+        SpeechRecognizerApplication.speechRecognizer.addNgramSearch(SpeechKeys.FORECAST_SEARCH, languageModel);
+        File phoneticModel = new File(assetsDir, "en-phone.dmp");
+        SpeechRecognizerApplication.speechRecognizer.addAllphoneSearch(SpeechKeys.PHONE_SEARCH, phoneticModel);
     }
 
 }

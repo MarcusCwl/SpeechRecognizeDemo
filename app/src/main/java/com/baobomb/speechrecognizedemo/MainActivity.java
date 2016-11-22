@@ -19,6 +19,13 @@ public class MainActivity extends Activity {
         init();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent intent = new Intent(this,SpeechService.class);
+        stopService(intent);
+    }
+
     public void init() {
         result = (TextView) findViewById(R.id.result);
         speechHandler = new Handler() {
@@ -41,12 +48,12 @@ public class MainActivity extends Activity {
                     case SpeechKeys.RETURN:
                         result.setText(message);
                         break;
-                    case SpeechKeys.WAKEUP:
-                        result.setText(message);
-                        break;
-                    case SpeechKeys.COMMANDER:
-                        result.setText(message);
-                        break;
+//                    case SpeechKeys.WAKEUP:
+//                        result.setText(message);
+//                        break;
+//                    case SpeechKeys.COMMANDER:
+//                        result.setText(message);
+//                        break;
                     case SpeechKeys.ERROR:
                         result.setText(message);
                         break;

@@ -80,7 +80,7 @@ public class SpeechService extends Service implements RecognitionListener {
     public void onPartialResult(Hypothesis hypothesis) {
         Log.d("BAO", "onPartialResult");
         if (hypothesis == null) {
-            Log.d("BAO","no result");
+            Log.d("BAO", "no result");
             sendMessage("");
             return;
         }
@@ -116,7 +116,7 @@ public class SpeechService extends Service implements RecognitionListener {
 
     @Override
     public void onError(Exception e) {
-        Log.d("BAO", "onError");
+        Log.d("BAO", "onError" + e.toString());
     }
 
     @Override
@@ -137,7 +137,7 @@ public class SpeechService extends Service implements RecognitionListener {
     }
 
     public void sendMessage(String msg) {
-        Log.d("BAO",msg);
+        Log.d("BAO", msg);
         Message message = Message.obtain(SpeechRecognizerApplication.speechHandler);
         message.obj = msg;
         message.sendToTarget();
