@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar commander;
+
+public <item> = menu | setting | bluetooth | camera | return;

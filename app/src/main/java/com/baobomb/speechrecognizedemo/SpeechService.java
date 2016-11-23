@@ -63,8 +63,8 @@ public class SpeechService extends Service implements RecognitionListener {
 
     @Override
     public void onEndOfSpeech() {
-        Log.d("BAO", "end speech");
         if (!SpeechRecognizerApplication.speechRecognizer.getSearchName().equals(SpeechKeys.WAKEUP)) {
+            Log.d("BAO", "end speech");
             switchSearch(SpeechKeys.WAKEUP);
         }
     }
@@ -90,7 +90,7 @@ public class SpeechService extends Service implements RecognitionListener {
         switch (text) {
             case SpeechKeys.COMMANDER:
                 sendMessage(text);
-                switchSearch(SpeechKeys.WAKEUP);
+                switchSearch(SpeechKeys.COMMAND_SEARCH);
                 break;
             case SpeechKeys.MENU:
                 sendMessage(text);

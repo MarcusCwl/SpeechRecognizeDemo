@@ -87,8 +87,12 @@ public class SpeechRecognizerAsync extends AsyncTask<Void, Void, Exception> {
 
 //        File languageModel = new File(assetsDir, "zh_tw.lm");//这里为语音模型
 //        SpeechRecognizerApplication.speechRecognizer.addNgramSearch("test", languageModel);
-        File menuGrammar = new File(assetsDir, "menu.gram");
-        SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(SpeechKeys.MENU_SEARCH, menuGrammar);
+
+//        File menuGrammar = new File(assetsDir, "menu.gram");
+//        SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(SpeechKeys.MENU_SEARCH, menuGrammar);
+
+        File commanderGrammar = new File(assetsDir, "commander.gram");
+        SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(SpeechKeys.COMMAND_SEARCH, commanderGrammar);
         File digitsGrammar = new File(assetsDir, "digits.gram");
         SpeechRecognizerApplication.speechRecognizer.addGrammarSearch(SpeechKeys.DIGITS_SEARCH, digitsGrammar);
         File languageModel = new File(assetsDir, "weather.dmp");

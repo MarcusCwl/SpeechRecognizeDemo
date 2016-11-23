@@ -16,7 +16,9 @@ public class SpeechKeys {
     public static final String FORECAST_SEARCH = "forecast";
     public static final String DIGITS_SEARCH = "digits";
     public static final String PHONE_SEARCH = "phones";
-    public static final String MENU_SEARCH = "menu";
+//    public static final String MENU_SEARCH = "menu";
+
+    public static final String COMMAND_SEARCH = "command";
 
 
 //    public static final String MENU = "選單";
