@@ -48,14 +48,17 @@ public class MainActivity extends Activity {
                     case SpeechKeys.RETURN:
                         result.setText(message);
                         break;
-//                    case SpeechKeys.WAKEUP:
-//                        result.setText(message);
-//                        break;
-//                    case SpeechKeys.COMMANDER:
-//                        result.setText(message);
-//                        break;
+                    case SpeechKeys.WAKEUP:
+                        result.setText(message);
+                        break;
+                    case SpeechKeys.COMMANDER:
+                        result.setText(message);
+                        break;
                     case SpeechKeys.ERROR:
                         result.setText(message);
+                        break;
+                    default:
+                        result.setText("");
                         break;
                 }
 

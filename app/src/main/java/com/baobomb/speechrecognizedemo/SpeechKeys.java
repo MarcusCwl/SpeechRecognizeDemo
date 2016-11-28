@@ -16,8 +16,6 @@ public class SpeechKeys {
     public static final String FORECAST_SEARCH = "forecast";
     public static final String DIGITS_SEARCH = "digits";
     public static final String PHONE_SEARCH = "phones";
-//    public static final String MENU_SEARCH = "menu";
-
     public static final String COMMAND_SEARCH = "command";
 
 
@@ -27,9 +25,7 @@ public class SpeechKeys {
 //    public static final String CAMERA = "相機";
 //    public static final String RETURN = "上一頁";
 //    public static final String ERROR = "error";
-//    public static final String FORECAST_SEARCH = "forecast";
-//    public static final String DIGITS_SEARCH = "digits";
-//    public static final String PHONE_SEARCH = "phones";
-//    public static final String MENU_SEARCH = "menu";
-//    public static final String KWS_SEARCH = "wakeup";
+//    public static final String WAKEUP = "wakeup";
+//    public static final String COMMANDER = "命令";
+//    public static final String COMMAND_SEARCH = "命令";
 }

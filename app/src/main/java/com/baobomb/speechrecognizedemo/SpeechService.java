@@ -6,14 +6,9 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import edu.cmu.pocketsphinx.Hypothesis;
 import edu.cmu.pocketsphinx.RecognitionListener;
-import edu.cmu.pocketsphinx.SpeechRecognizer;
-
-import static android.widget.Toast.makeText;
 
 /**
  * Created by LEAPSY on 2016/11/22.
@@ -63,7 +58,7 @@ public class SpeechService extends Service implements RecognitionListener {
 
     @Override
     public void onEndOfSpeech() {
-        if (!SpeechRecognizerApplication.speechRecognizer.getSearchName().equals(SpeechKeys.WAKEUP)) {
+        if (SpeechRecognizerApplication.speechRecognizer != null && !SpeechRecognizerApplication.speechRecognizer.getSearchName().equals(SpeechKeys.WAKEUP)) {
             Log.d("BAO", "end speech");
             switchSearch(SpeechKeys.WAKEUP);
         }
@@ -73,7 +68,7 @@ public class SpeechService extends Service implements RecognitionListener {
     public void onResult(Hypothesis hypothesis) {
         Log.d("BAO", "onResult");
         if (hypothesis != null) {
-            Log.d("BAO", "result : "+hypothesis.getHypstr());
+            Log.d("BAO", "result : " + hypothesis.getHypstr());
         }
     }
 
@@ -118,6 +113,7 @@ public class SpeechService extends Service implements RecognitionListener {
                 break;
             default:
                 sendMessage("");
+                switchSearch(SpeechKeys.WAKEUP);
                 break;
         }
     }

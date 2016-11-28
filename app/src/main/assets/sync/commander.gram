@@ -2,4 +2,4 @@
 
 grammar commander;
 
-public <item> = menu | setting | bluetooth | camera | return;
+public <item> = menu | setting | bluetooth | camera | return | gesture;
