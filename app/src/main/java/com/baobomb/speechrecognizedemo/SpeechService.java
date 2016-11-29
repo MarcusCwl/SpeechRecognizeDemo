@@ -111,6 +111,12 @@ public class SpeechService extends Service implements RecognitionListener {
                 sendMessage(text);
                 switchSearch(SpeechKeys.WAKEUP);
                 break;
+            case SpeechKeys.BACK:
+                sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
+            case SpeechKeys.HANDS:
+                sendMessage(text);
+                switchSearch(SpeechKeys.WAKEUP);
             default:
                 sendMessage("");
                 switchSearch(SpeechKeys.WAKEUP);

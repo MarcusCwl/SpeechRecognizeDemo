@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
                     case SpeechKeys.BLUETOOTH:
                         result.setText(message);
                         break;
-                    case SpeechKeys.RETURN:
+                    case SpeechKeys.BACK:
                         result.setText(message);
                         break;
                     case SpeechKeys.WAKEUP:
@@ -55,6 +55,9 @@ public class MainActivity extends Activity {
                         result.setText(message);
                         break;
                     case SpeechKeys.ERROR:
+                        result.setText(message);
+                        break;
+                    case SpeechKeys.HANDS:
                         result.setText(message);
                         break;
                     default:

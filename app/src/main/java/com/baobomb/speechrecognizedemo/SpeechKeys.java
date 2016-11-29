@@ -9,7 +9,8 @@ public class SpeechKeys {
     public static final String SETTING = "setting";
     public static final String BLUETOOTH = "bluetooth";
     public static final String CAMERA = "camera";
-    public static final String RETURN = "return";
+    public static final String BACK = "back";
+    public static final String HANDS = "hands";
     public static final String WAKEUP = "wakeup";
     public static final String COMMANDER = "commander";
     public static final String ERROR = "error";
